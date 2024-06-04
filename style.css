@@ -1,3 +1,33 @@
-h1{
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #fdcae1;
+    display: flex;
+    justify-content:space-between ;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    margin: 5px;
+    padding: 5px;
+}
+
+
+h1 {
+    color: black;
     text-align: center;
+}
+
+.emoji-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.emoji {
+    font-size: 2rem;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #fffec2;
+
 }
