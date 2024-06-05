@@ -1,33 +1,31 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const emojiContainer = document.getElementById('emoji-container');
+document.addEventListener("DOMContentLoaded", () => {
+    const emojiContainer = document.getElementById("emoji-container");
 
-    // Función para obtener los datos de la API
-    async function fetchEmojis() {
+    // Funcion para obtener los datos de la API
+    const procesarFetch = async () => {
         try {
-            const response = await fetch('https://emojihub.yurace.pro/api/all');
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+            const respuesta = await fetch("https://emojihub.yurace.pro/api/all");
+            if (!respuesta.ok) {
+                throw new Error("La respuesta de la red no fue satisfactoria");
             }
-            const emojis = await response.json();
-            displayEmojis(emojis);
+            const info = await respuesta.json();
+            mostrarEmojis(info);
         } catch (error) {
-            console.error('Error fetching emojis:', error);
+            console.log("Hubo un error", error);
         }
+        
     }
 
-    // Función para mostrar los emojis en la página
-    function displayEmojis(emojis) {
+    // Funcion para mostrar los emojis en la pagina
+    function mostrarEmojis(emojis) {
         emojis.forEach(emoji => {
-            const emojiElement = document.createElement('div');
-            emojiElement.classList.add('emoji');
-            emojiElement.innerHTML = emoji.htmlCode[0]; // Usamos innerHTML para renderizar el HTML del emoji
+            const emojiElement = document.createElement("div");
+            emojiElement.classList.add("emoji");
+            emojiElement.innerHTML = emoji.htmlCode[0];
             emojiContainer.appendChild(emojiElement);
         });
     }
 
     // Llamar a la funcion para obtener y mostrar los emojis
-    fetchEmojis();
+    procesarFetch();
 });
-
-
-  
